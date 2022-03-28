@@ -1,11 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Home from './components/Home';
+import { Route, Routes  } from 'react-router-dom';
+import GamePage from './components/GamePage';
 
-function App() {
+
+const App = () => {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/gamepage" element={<GamePage />} />
+      </Routes>
     </div>
   );
 }
