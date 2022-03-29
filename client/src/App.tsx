@@ -7,8 +7,8 @@ import { io } from 'socket.io-client';
 import { useAppSelector, useAppDispatch } from './hooks/hooks';
 import { setReducer, setChosenReducer, setRoomReducer } from './slices/slices';
 
-// const socket = io('https://guess-who-salt-game-socket.herokuapp.com/');
-const socket = io('http://localhost:8000/');
+const socket = io('https://guess-who-salt-game-socket.herokuapp.com/');
+// const socket = io('http://localhost:8000/');
 
 const App = () => {
   const state = useAppSelector(state => state.updateGame);
