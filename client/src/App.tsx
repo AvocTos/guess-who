@@ -5,12 +5,10 @@ import { Route, Routes  } from 'react-router-dom';
 import GamePage from './components/GamePage';
 import { io } from 'socket.io-client';
 import { useAppSelector, useAppDispatch } from './hooks/hooks';
-import { setReducer } from './slices/slices';
+import { setReducer, setChosenReducer, setRoomReducer } from './slices/slices';
 
-
-
-const socket = io('https://guess-who-salt-game-socket.herokuapp.com/');
-// const socket = io('http://localhost:8000/');
+// const socket = io('https://guess-who-salt-game-socket.herokuapp.com/');
+const socket = io('http://localhost:8000/');
 
 const App = () => {
   const state = useAppSelector(state => state.updateGame);
@@ -18,7 +16,18 @@ const App = () => {
   useEffect(()=>{
     socket.on('room-alert', (roomId, people) => {
       dispatch(setReducer(people));
+      dispatch(setRoomReducer(roomId));
     });
+    socket.on('chosen', (render, guess) => {
+      const chosens = {
+        render: render,
+        guess: guess
+      }
+      dispatch(setChosenReducer(chosens));
+    });
+    socket.on('return-win', (data) => {
+      console.log(data, 'received ******')
+    })
   },[]);
 
   return (

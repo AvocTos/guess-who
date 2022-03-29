@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useAppSelector } from '../hooks/hooks';
 
-const Form = () => {
+const Form = ({ socket }: FormProps) => {
   const [userInput, setUserInput] = useState('');
+  const state = useAppSelector(state => state.updateGame);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(userInput);
+    if (userInput.toLowerCase() === state.chosens.guess.name.toLowerCase()) {
+      socket.emit('win', 'I win', state.roomId);
+    }
     setUserInput('');
   }
 

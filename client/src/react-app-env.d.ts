@@ -10,8 +10,13 @@ type Card = {
 type CardList = Card[];
 
 type GameState = {
+  roomId: string,
   playing: boolean,
   cards: CardList,
+  chosens: {
+    render: Card,
+    guess: Card
+  }
 }
 
 declare module 'list-react-files';
@@ -25,5 +30,9 @@ interface HomeProps {
 }
 
 interface GamePageProps {
+  socket: Socket<DefaultEventsMap, DefaultEventsMap>,
+}
+
+interface FormProps {
   socket: Socket<DefaultEventsMap, DefaultEventsMap>,
 }
