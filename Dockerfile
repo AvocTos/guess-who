@@ -15,6 +15,7 @@ WORKDIR /usr/guess-who/server/
 COPY /server/package*.json ./
 RUN npm install
 
+COPY /server/db.js ./
 COPY /server/index.js ./
 
 EXPOSE 8080
