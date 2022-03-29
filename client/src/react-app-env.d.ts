@@ -3,7 +3,7 @@
 type Card = {
   name: string,
   image: string,
-  id: string,
+  id: number,
   isTheOne: boolean,
 }
 
@@ -17,5 +17,13 @@ type GameState = {
 declare module 'list-react-files';
 
 interface CardProps {
-  person: string,
+  person: Card,
+}
+
+interface HomeProps {
+  socket: Socket<DefaultEventsMap, DefaultEventsMap>,
+}
+
+interface GamePageProps {
+  socket: Socket<DefaultEventsMap, DefaultEventsMap>,
 }

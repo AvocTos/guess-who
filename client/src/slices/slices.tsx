@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialState = {playing: false, cards: []} as GameState;
 
 export const gameSlice = createSlice({
-  name: 'gameReducer',
+  name: 'updateGameReducer',
   initialState,
   reducers: {
     setReducer: (state: GameState, action) => {
@@ -12,8 +12,14 @@ export const gameSlice = createSlice({
         cards: action.payload
       }
     },
+    setPlayingReducer: (state: GameState, action) => {
+      return {
+        playing: action.payload,
+        cards: state.cards
+      }
+    },
   }
 })
 
-export const { setReducer } = gameSlice.actions
+export const { setReducer, setPlayingReducer } = gameSlice.actions
 export default gameSlice.reducer

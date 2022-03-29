@@ -1,11 +1,9 @@
-// header
-// welcome *player*
-// go play btn
 import { useNavigate } from 'react-router-dom';
 
-const Home = () => {
+const Home = ({socket}: HomeProps) => {
   const navigate = useNavigate();
   const navigateToGamepage = () => {
+    socket.emit("add-to-waiting");
     navigate('/gamepage');
   }
 
