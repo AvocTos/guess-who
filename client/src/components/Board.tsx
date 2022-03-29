@@ -35,7 +35,7 @@ const Board = () => {
       <h1>I'm the board</h1> 
       <section className="">
         {salties.map((person, index: number) => (
-          <Card person={person} />
+          <Card key={index} person={person} />
         ))}
       </section>
     </div>
