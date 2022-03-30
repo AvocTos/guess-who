@@ -5,11 +5,12 @@ import { useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../hooks/hooks';
 import { setPlayingReducer } from '../slices/slices';
 import Questions from './Questions';
+import Chatlog from './Chatlog';
 
 
 const GamePage = ({socket}: GamePageProps) => {
   const [message, setMessage] = useState('');
-  const [questionAnswer, setQuestionAnswer] = useState('');
+  const [log, setLog] = useState<string[]>([]);
   const state = useAppSelector((state) => state.updateGame);
   const dispatch = useAppDispatch();
 
@@ -26,7 +27,7 @@ const GamePage = ({socket}: GamePageProps) => {
       }
     });
     socket.on("return-question-answer", (message: string, answer: string) => {
-      setQuestionAnswer(`${message}: ${answer}`);
+      setLog(previousState => [...previousState, `${message}: ${answer}`]);
     });
   }, []);
   
@@ -35,7 +36,7 @@ const GamePage = ({socket}: GamePageProps) => {
       <h1>I'm the game page</h1>
       <Board socket={socket}/>
       <Form socket={socket}/>
-      <p>{questionAnswer}, this should be the answer</p>
+      <Chatlog log={log}/>
       <Questions socket={socket} message={message} setMessage={setMessage} />
     </div>
   );

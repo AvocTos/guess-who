@@ -46,3 +46,7 @@ interface QuestionsProps {
   message: string,
   socket: Socket<DefaultEventsMap, DefaultEventsMap>,
 }
+
+interface ChatlogProps {
+  log: string[],
+}
