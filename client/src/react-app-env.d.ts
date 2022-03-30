@@ -40,3 +40,9 @@ interface FormProps {
 interface BoardProps {
   socket: Socket<DefaultEventsMap, DefaultEventsMap>,
 }
+
+interface QuestionsProps {
+  setMessage: React.Dispatch<React.SetStateAction<string>>,
+  message: string,
+  socket: Socket<DefaultEventsMap, DefaultEventsMap>,
+}

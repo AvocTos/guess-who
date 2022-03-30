@@ -8,23 +8,21 @@ const Form = ({ socket }: FormProps) => {
   const dispatch = useAppDispatch();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (userInput.toLowerCase() === state.chosens.guess.name.toLowerCase()) {
-      socket.emit('win', state.roomId, socket.id);
-    }
-    if (userInput.toLowerCase() !== state.chosens.guess.name.toLowerCase()) {
-      socket.emit('change-turn', state.roomId);
-      dispatch(setPlayingReducer('inactive'));
-    }
+    socket.emit('send-message', state.roomId, userInput);
+    socket.emit('change-turn', state.roomId);
+    dispatch(setPlayingReducer('inactive'));
     setUserInput('');
   }
 
   return (
+    <>
     <div className={state.playing === 'active' ? 'form' : 'form--inactive'}>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={userInput} placeholder="my guesses" onChange={e => setUserInput(e.target.value)}/>
+        <input required type="text" value={userInput} placeholder="my guesses" onChange={e => setUserInput(e.target.value)}/>
         <button>Guess</button>
       </form>
     </div>
+    </>
   );
 }
 

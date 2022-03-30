@@ -20,7 +20,7 @@ const Card = ({person, socket}: CardProps) => {
       <h1>I'm the card</h1>
       <img src={require(`../player-images/${person.image}`)} />
       <p>{person.name}</p>
-      <button onClick={handleClick}>Guess</button>
+      <button className={state.playing === 'active' ? 'card__btn' : 'card__btn--inactive'} onClick={handleClick}>Guess</button>
     </div>
   );
 }
