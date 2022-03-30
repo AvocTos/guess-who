@@ -7,7 +7,7 @@ const initialCard = {
   isTheOne: false,
 }
 
-const initialState = {roomId: '', playing: false, cards: [], chosens: {render: initialCard, guess: initialCard}} as GameState;
+const initialState = {roomId: '', playing: 'false', cards: [], chosens: {render: initialCard, guess: initialCard}} as GameState;
 
 export const gameSlice = createSlice({
   name: 'updateGameReducer',

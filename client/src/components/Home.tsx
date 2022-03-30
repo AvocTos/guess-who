@@ -4,7 +4,7 @@ const Home = ({socket}: HomeProps) => {
   const navigate = useNavigate();
   const navigateToGamepage = () => {
     socket.emit("add-to-waiting");
-    navigate('/gamepage');
+    navigate('/waiting'); 
   }
 
   return (

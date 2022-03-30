@@ -7,7 +7,7 @@ const Form = ({ socket }: FormProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (userInput.toLowerCase() === state.chosens.guess.name.toLowerCase()) {
-      socket.emit('win', 'I win', state.roomId);
+      socket.emit('win', state.roomId, socket.id);
     }
     setUserInput('');
   }

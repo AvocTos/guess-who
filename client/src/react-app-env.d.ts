@@ -11,7 +11,7 @@ type CardList = Card[];
 
 type GameState = {
   roomId: string,
-  playing: boolean,
+  playing: string,
   cards: CardList,
   chosens: {
     render: Card,
