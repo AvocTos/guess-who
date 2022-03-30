@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import { setPlayingReducer, setReducer } from '../slices/slices';
 import Card from './Card';
 
-const Board = () => {
+const Board = ({socket}: BoardProps) => {
   const state = useAppSelector(state => state.updateGame);
   
   // ß
@@ -13,11 +13,11 @@ const Board = () => {
       <section className="">
         {state.cards.map((person, index: number) => {
           return(
-          <Card key={index} person={person} />
+          <Card key={index} person={person} socket={socket} />
         )})}
       </section>
       <p>I'm the chosen</p>
-      <Card person={state.chosens.render} />
+      <Card socket={socket} person={state.chosens.render} />
     </div>
   );
 }

@@ -15,7 +15,7 @@ type GameState = {
   cards: CardList,
   chosens: {
     render: Card,
-    guess: Card
+    guess: Card,
   }
 }
 
@@ -23,6 +23,7 @@ declare module 'list-react-files';
 
 interface CardProps {
   person: Card,
+  socket: Socket<DefaultEventsMap, DefaultEventsMap>,
 }
 
 interface HomeProps {
@@ -34,5 +35,8 @@ interface GamePageProps {
 }
 
 interface FormProps {
+  socket: Socket<DefaultEventsMap, DefaultEventsMap>,
+}
+interface BoardProps {
   socket: Socket<DefaultEventsMap, DefaultEventsMap>,
 }
