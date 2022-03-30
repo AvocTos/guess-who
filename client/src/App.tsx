@@ -9,8 +9,8 @@ import { setReducer, setChosenReducer, setRoomReducer, setPlayingReducer } from 
 import ResultsPage from './components/ResultsPage';
 import LoadingPage from './components/LoadingPage';
 
-// const socket = io('https://guess-who-salt-game-socket.herokuapp.com/');
-const socket = io('http://localhost:8000/');
+const socket = io('https://guess-who-salt-game-socket.herokuapp.com/');
+// const socket = io('http://localhost:8000/');
 
 const App = () => {
   const state = useAppSelector(state => state.updateGame);
