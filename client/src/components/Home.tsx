@@ -9,8 +9,8 @@ const Home = ({socket}: HomeProps) => {
 
   return (
     <div className="home">
-      <h1>I'm home</h1>
-      <button onClick={navigateToGamepage}>Go play</button>
+      <h1 className="home__title">Guess Who?</h1>
+      <button className="home__play-btn" onClick={navigateToGamepage}>Go play</button>
     </div>
   );
 }

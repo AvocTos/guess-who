@@ -3,11 +3,11 @@
   height: 100vh;
   width: 100vw;
   text-align: center;
-  padding-top: 30vh;
+  padding-top: 15vh;
+  overflow-wrap: break-word;
 //   -ms-transform: translateY(-50%);
 //   transform: translateY(-50%);
   &__content {
-    border: 1px solid black;
     padding: 5rem;
     width: 50%;
     margin: auto;
@@ -16,15 +16,30 @@
     margin-bottom: 1rem;
   }
   &__message {
-
+   margin-bottom: 1rem;
   }
   &--inactive {
     display: none;
   }
   &__btn-yes {
+    border: 1px solid #eee;
+    border-radius: 0.2rem;
+    padding: 0.3rem;
+    margin-left: 0.5rem;
     margin: 1rem;
+    width: 3rem;
   }
   &__btn-no {
+    border: 1px solid #eee;
+    border-radius: 0.2rem;
+    padding: 0.3rem;
+    margin-left: 0.5rem;
     margin: 1rem;
+    width: 3rem;
+  }
+  &__img {
+      width: fit-content;
+      margin: auto;
+      margin-top: 1rem;
   }
 }

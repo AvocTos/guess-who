@@ -32,6 +32,10 @@ interface HomeProps {
 
 interface GamePageProps {
   socket: Socket<DefaultEventsMap, DefaultEventsMap>,
+  message: string,
+  log: string[],
+  setLog: React.Dispatch<React.SetStateAction<string[]>>,
+  setMessage: React.Dispatch<React.SetStateAction<string>>,
 }
 
 interface FormProps {

@@ -16,11 +16,13 @@ const Questions = ({socket, message, setMessage}: QuestionsProps) => {
     return (
     <div className={message.length > 0 ? 'question' : 'question--inactive'}>
       <div className="question__content">
-        <h2 className="question__title">Your opponent asks:</h2>
-        <p className="question__message">"{message}"</p>
+        <p className="question__title">Your opponent asks:</p>
+        <h2 className="question__message">"{message} ? "</h2>
         <button className= "question__btn-yes" onClick={handleYesClick}>Yes</button>
         <button className="question__btn-no" onClick={handleNoClick}>No</button>
-        <Card socket={socket} person={state.chosens.render} />
+         <div className="question__img">  
+          <Card socket={socket} person={state.chosens.render} />
+         </div>
       </div>
     </div>
   );

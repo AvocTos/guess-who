@@ -1,16 +1,25 @@
 .card {
-    border: 1px solid black;
+    border-radius: 5px;
     text-align: center;
     flex-grow: 1;
+    max-width: 10rem;
+    background-color: var(--card-bg);
+    padding-bottom: 0.5rem;
   &__img {
     height: 10rem;
-  }
+    width: 100%;
+    border-top-left-radius: 0.2rem;
+    border-top-right-radius: 0.2rem;
+ }
   &__name {
-    padding: 1rem;
+    padding: 0.3rem;
   }
   &__btn {
+    border-radius: 0.2rem;
+    padding: 0.2rem;
+    border: 1px solid #eee;
     &--inactive {
-      display: none;
+     visibility:hidden;
     }
   }
 }

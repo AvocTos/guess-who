@@ -7,6 +7,7 @@ const Card = ({person, socket}: CardProps) => {
 
   const handleClick = () => {
     if (state.chosens.guess.name === person.name) {
+      console.log(state.roomId);
       socket.emit('win', state.roomId, socket.id);
     }
     if (state.chosens.guess.name !== person.name) {

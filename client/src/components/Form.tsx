@@ -18,8 +18,8 @@ const Form = ({ socket }: FormProps) => {
     <>
     <div className={state.playing === 'active' ? 'form' : 'form--inactive'}>
       <form onSubmit={handleSubmit}>
-        <input required type="text" value={userInput} placeholder="my guesses" onChange={e => setUserInput(e.target.value)}/>
-        <button>Guess</button>
+        <input className="form__input" required type="text" value={userInput} placeholder="ex. are they blond" onChange={e => setUserInput(e.target.value)}/>
+        <button className="form__ask-btn">Ask</button>
       </form>
     </div>
     </>

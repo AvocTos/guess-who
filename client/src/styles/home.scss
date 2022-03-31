@@ -1,0 +1,10 @@
+.home {
+    text-align: center;
+    &__title {
+        padding-top: 30vh;
+        font-size: 5rem;
+    }
+    &__play-btn {
+        margin-top: 3rem;
+    }
+}

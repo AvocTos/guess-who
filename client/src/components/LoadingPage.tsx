@@ -11,9 +11,9 @@ const LoadingPage = ({socket}: HomeProps) => {
   }
 
   return (
-    <div className="loading__page">
-      <h1>Waiting for someone to join...</h1>
-      <button onClick={navigateToHomepage}>Go back</button>
+    <div className="loading-page">
+      <h1 className="loading-page__title">Waiting for someone to join...</h1>
+      <button className="loading-page__back-btn" onClick={navigateToHomepage}>Go back</button>
     </div>
   );
 }

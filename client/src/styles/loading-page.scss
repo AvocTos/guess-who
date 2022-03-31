@@ -1,0 +1,10 @@
+.loading-page {
+  text-align: center;
+  &__title {
+    padding-top: 30vh;
+    font-size: 5rem;
+  }
+  &__back-btn {
+    margin-top: 3rem;
+  }
+}

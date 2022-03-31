@@ -5,12 +5,23 @@
 @import "./styles/game-page";
 @import "./styles/panel";
 @import "./styles/question";
+@import "./styles/colors";
+@import "./styles/home";
+@import "./styles/loading-page";
+@import "./styles/chatlog";
 
+button {
+  cursor:pointer;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  border: 1px solid #eee;
+}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  background-color: var(--main-bg);
 }
 
 code {
