@@ -16,12 +16,11 @@ const Card = ({person, socket}: CardProps) => {
   }
 
   return (
-    <div className="card">
-      <h1>I'm the card</h1>
-      <img src={require(`../player-images/${person.image}`)} />
-      <p>{person.name}</p>
-      <button className={state.playing === 'active' ? 'card__btn' : 'card__btn--inactive'} onClick={handleClick}>Guess</button>
-    </div>
+    <article className="card">
+      <img src={require(`../player-images/${person.image}`)} className="card__img" />
+      <p className="card__name">{person.name}</p>
+      <button className={state.playing === 'active' && state.chosens.render.name !== person.name ? 'card__btn' : 'card__btn--inactive'} onClick={handleClick}>Guess</button>
+    </article>
   );
 }
 

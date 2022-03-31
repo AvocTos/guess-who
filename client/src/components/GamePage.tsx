@@ -17,7 +17,6 @@ const GamePage = ({socket}: GamePageProps) => {
   useEffect(() => {
     socket.on("return-change-turn", (socketId: string) => {
       if (socketId !== socket.id) {
-        console.log(state.playing, 'switch to active');
         dispatch(setPlayingReducer('active'));
       }
     });
@@ -27,18 +26,24 @@ const GamePage = ({socket}: GamePageProps) => {
       }
     });
     socket.on("return-question-answer", (message: string, answer: string) => {
-      setLog(previousState => [...previousState, `${message}: ${answer}`]);
+      setLog(previousState => {
+        return [...previousState, `${message}: ${answer}`];
+    });
     });
   }, []);
   
   return (
-    <div className="game__page">
-      <h1>I'm the game page</h1>
+    <>
+    <div className={message.length > 0 ? 'game-page--hide' : 'game-page'}>
       <Board socket={socket}/>
-      <Form socket={socket}/>
-      <Chatlog log={log}/>
-      <Questions socket={socket} message={message} setMessage={setMessage} />
+      <aside className="panel">
+        <Card socket={socket} person={state.chosens.render} />
+        <Form socket={socket}/>
+        <Chatlog log={log}/>
+      </aside>
     </div>
+      <Questions socket={socket} message={message} setMessage={setMessage} />
+    </>
   );
 }
 

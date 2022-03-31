@@ -1,0 +1,7 @@
+.game-page {
+    display: flex;
+    position: relative;
+    &--hide {
+        display: none;
+    }
+}

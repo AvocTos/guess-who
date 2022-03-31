@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from '../hooks/hooks';
+import Card from "./Card";
 
 const Questions = ({socket, message, setMessage}: QuestionsProps) => {
     const state = useAppSelector(state => state.updateGame);
@@ -14,9 +15,13 @@ const Questions = ({socket, message, setMessage}: QuestionsProps) => {
     }
     return (
     <div className={message.length > 0 ? 'question' : 'question--inactive'}>
-      <h1>{message}</h1>
-      <button onClick={handleYesClick}>Yes</button>
-      <button onClick={handleNoClick}>No</button>
+      <div className="question__content">
+        <h2 className="question__title">Your opponent asks:</h2>
+        <p className="question__message">"{message}"</p>
+        <button className= "question__btn-yes" onClick={handleYesClick}>Yes</button>
+        <button className="question__btn-no" onClick={handleNoClick}>No</button>
+        <Card socket={socket} person={state.chosens.render} />
+      </div>
     </div>
   );
 }

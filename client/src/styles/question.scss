@@ -1,0 +1,30 @@
+.question {
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  padding-top: 30vh;
+//   -ms-transform: translateY(-50%);
+//   transform: translateY(-50%);
+  &__content {
+    border: 1px solid black;
+    padding: 5rem;
+    width: 50%;
+    margin: auto;
+  }
+  &__title {
+    margin-bottom: 1rem;
+  }
+  &__message {
+
+  }
+  &--inactive {
+    display: none;
+  }
+  &__btn-yes {
+    margin: 1rem;
+  }
+  &__btn-no {
+    margin: 1rem;
+  }
+}

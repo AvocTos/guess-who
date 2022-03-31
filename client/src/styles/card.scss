@@ -1,0 +1,16 @@
+.card {
+    border: 1px solid black;
+    text-align: center;
+    flex-grow: 1;
+  &__img {
+    height: 10rem;
+  }
+  &__name {
+    padding: 1rem;
+  }
+  &__btn {
+    &--inactive {
+      display: none;
+    }
+  }
+}
