@@ -27,7 +27,7 @@
     padding: 0.3rem;
     margin-left: 0.5rem;
     margin: 1rem;
-    width: 3rem;
+    min-width: 3rem;
   }
   &__btn-no {
     border: 1px solid #eee;
@@ -35,7 +35,7 @@
     padding: 0.3rem;
     margin-left: 0.5rem;
     margin: 1rem;
-    width: 3rem;
+    min-width: 3rem;
   }
   &__img {
       width: fit-content;

@@ -8,3 +8,7 @@
 .panel > .card {
   margin: 2rem auto;
 }
+
+.panel > .card > button {
+  display: none;
+}

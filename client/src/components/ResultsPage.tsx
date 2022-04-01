@@ -14,11 +14,10 @@ const ResultsPage = ({socket}: HomeProps) => {
   }
 
   return (
-    <div className="results__page">
-      <h1>Results page</h1>
-      <h2>{state.playing}</h2>
-      <button onClick={navigateToGamepage}>Play again</button>
-      <button onClick={navigateToHomepage}>Home page</button>
+    <div className="results">
+      <h1 className="results__title">You {state.playing}!</h1>
+      <button className='results__play-btn' onClick={navigateToGamepage}>Play again</button>
+      <button className='results__back-btn' onClick={navigateToHomepage}>Home page</button>
     </div>
   );
 }

@@ -53,10 +53,11 @@ const App = () => {
       }
       navigate("/results");
     });
-    socket.on("return-change-turn", (socketId: string) => {
+    socket.on("return-change-turn", (socketId: string, name: string) => {
       console.log('change turn running')
       if (socketId !== socket.id) {
         dispatch(setPlayingReducer('active'));
+        setLog(previousState => [`Opponent guessed ${name}, and was wrong!`, ...previousState])
       }
     });
     socket.on("return-send-message", (userInput: string, socketId: string) => {
@@ -68,9 +69,12 @@ const App = () => {
     socket.on("return-question-answer", (message: string, answer: string) => {
       setLog(previousState => {
         console.log(previousState);
-        return [...previousState, `${message}: ${answer}`];
+        return [answer, ...previousState];
       });
     });
+    socket.on('return-print-question', (question: string) => {
+      setLog(previousState => [`${question}?`, ...previousState]);
+    })
   }, [socket]);
 
   return (

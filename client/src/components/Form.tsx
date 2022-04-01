@@ -10,6 +10,7 @@ const Form = ({ socket }: FormProps) => {
     e.preventDefault();
     socket.emit('send-message', state.roomId, userInput);
     socket.emit('change-turn', state.roomId);
+    socket.emit('print-question', state.roomId, userInput)
     dispatch(setPlayingReducer('inactive'));
     setUserInput('');
   }

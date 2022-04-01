@@ -16,6 +16,8 @@ const GamePage = ({socket, message, log, setLog, setMessage}: GamePageProps) => 
     <div className={message.length > 0 ? 'game-page--hide' : 'game-page'}>
       <Board socket={socket}/>
       <aside className="panel">
+        <h2>{state.playing === "active" ? "It's your turn!" : "Opponent's turn"}</h2>
+        <p>{state.playing === "active" ? "Ask a question or make a guess" : "please wait..."}</p>
         <Card socket={socket} person={state.chosens.render} />
         <Chatlog log={log}/>
         <Form socket={socket}/>

@@ -1,0 +1,20 @@
+.results {
+  text-align: center;
+  &__title {
+    padding-top: 30vh;
+    font-size: 5rem;
+  }
+  &__play-btn {
+    margin-top: 3rem;
+    margin-right: 1rem;
+    padding: 0.3rem;
+    min-width: 3rem;
+  }
+  &__back-btn {
+    margin-top: 3rem;
+    margin-left: 1rem;
+    padding: 0.3rem;
+    min-width: 3rem;
+    
+ }
+}

@@ -3,6 +3,16 @@
   --blue: #505A78;
   --peach: #EA9F76;
   --burgundy: #5C3332;
-  --main-bg: var(--blue);
-  --card-bg: var(--peach);
+  --light-white: rgba(238, 238, 238, 0.358);
+  --white: #ffffff;
+  --dark-white: #e1e1e1;
+  --dark-grey: #484848;
+  --chatlog-bg: var(--light-white);
+  --font-color: var(--dark-grey);
+  --main-bg: var(--white);
+  --card-bg: var(--white);
+  --box-shadow: var(--dark-white);
+  --btn-border-hover: var(--dark-white);
+  --btn-bg-hover: var(--light-white);
+  --card-inactive: var(--light-white);
 }

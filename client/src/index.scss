@@ -9,12 +9,18 @@
 @import "./styles/home";
 @import "./styles/loading-page";
 @import "./styles/chatlog";
+@import "./styles/results";
 
 button {
   cursor:pointer;
   border-radius: 0.2rem;
   padding: 0.2rem;
   border: 1px solid #eee;
+  color: var(--font-color);
+  &:hover{
+    background-color: var(--btn-bg-hover);
+    border: 1px solid var(--btn-border-hover);
+  } 
 }
 
 body {
@@ -22,6 +28,7 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   background-color: var(--main-bg);
+  color: var(--font-color);
 }
 
 code {
