@@ -75,7 +75,7 @@ const App = () => {
       });
     });
     socket.on('return-print-question', (question: string) => {
-      setLog(previousState => [`${question}?`, ...previousState]);
+      setLog(previousState => [question, ...previousState]);
     })
   }, [socket]);
 
