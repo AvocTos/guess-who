@@ -57,7 +57,9 @@ const App = () => {
       console.log('change turn running')
       if (socketId !== socket.id) {
         dispatch(setPlayingReducer('active'));
-        setLog(previousState => [`Opponent guessed ${name}, and was wrong!`, ...previousState])
+        if (name !== null) {
+          setLog(previousState => [`Opponent guessed ${name}, and was wrong!`, ...previousState])
+        }
       }
     });
     socket.on("return-send-message", (userInput: string, socketId: string) => {
