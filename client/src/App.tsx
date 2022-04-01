@@ -44,7 +44,6 @@ const App = () => {
       console.log('return-win', roomId, '*****');
       socket.emit("leave-room", roomId);
       dispatch(setReducer([]));
-      // dispatch clear log
       if (socketId === socket.id) {
         dispatch(setPlayingReducer("won"));
       }
@@ -52,6 +51,7 @@ const App = () => {
         dispatch(setPlayingReducer("lost"));
       }
       navigate("/results");
+      // RESET SOCKET HERE???
     });
     socket.on("return-change-turn", (socketId: string, name: string) => {
       console.log('change turn running')
