@@ -12,10 +12,11 @@ import {
 } from "./slices/slices";
 import ResultsPage from "./components/ResultsPage";
 import LoadingPage from "./components/LoadingPage";
+import { AnimatePresence } from "framer-motion";
 
 // const url = 'https://guess-who-salt-game-socket.herokuapp.com/';
 const url = "http://localhost:8000/";
-// hi
+
 const initialSocket = io(url); //need to declare this here, if we put 'io(url)' in line 25 it creates 2 sockets cuz react reads the component twice
 
 const App = () => {
@@ -86,12 +87,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home socket={socket} />} />
-        <Route path="/gamepage" element={<GamePage socket={socket} message={message} log={log} setLog={setLog} setMessage={setMessage} />} />
-        <Route path="/results" element={<ResultsPage socket={socket} />} />
-        <Route path="/waiting" element={<LoadingPage socket={socket} />} />
-      </Routes>
+      <AnimatePresence exitBeforeEnter initial={false}>
+        <Routes>
+          <Route path="/" element={<Home socket={socket} />} />
+          <Route path="/gamepage" element={<GamePage socket={socket} message={message} log={log} setLog={setLog} setMessage={setMessage} />} />
+          <Route path="/results" element={<ResultsPage socket={socket} />} />
+          <Route path="/waiting" element={<LoadingPage socket={socket} />} />
+        </Routes>
+      </AnimatePresence>
     </div>
   );
 };
