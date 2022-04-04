@@ -17,6 +17,7 @@ type GameState = {
     render: Card,
     guess: Card,
   }
+  playerName: string,
 }
 
 declare module 'list-react-files';

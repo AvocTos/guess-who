@@ -1,11 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
+import { useAppSelector } from '../hooks/hooks';
 
 const Home = ({socket}: HomeProps) => {
-  const navigate = useNavigate();
+ const state = useAppSelector(state => state.updateGame);
+ const navigate = useNavigate();
   const navigateToGamepage = () => {
-    socket.emit("add-to-waiting");
+    socket.emit("add-to-waiting", state.playerName);
     navigate('/waiting');
+  }
+
+  const signOut = () => {
+    window.localStorage.clear();
+    navigate('/login');
   }
 
   return (
@@ -17,7 +24,9 @@ const Home = ({socket}: HomeProps) => {
     >
       <div className="home">
         <h1 className="home__title">Guess Who?</h1>
+        <h2>Welcome {state.playerName}</h2>
         <button className="home__play-btn" onClick={navigateToGamepage}>Go play</button>
+        <button className="home__play-btn" onClick={signOut}>Sign Out</button>
       </div>
     </motion.div>
   );

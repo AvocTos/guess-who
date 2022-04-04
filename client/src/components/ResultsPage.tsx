@@ -5,7 +5,7 @@ const ResultsPage = ({socket}: HomeProps) => {
   const state = useAppSelector(state => state.updateGame);
   const navigate = useNavigate();
   const navigateToGamepage = () => {
-    socket.emit("add-to-waiting");
+    socket.emit("add-to-waiting", state.playerName);
     navigate('/waiting');
   }
   
