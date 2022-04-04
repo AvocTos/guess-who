@@ -12,27 +12,29 @@ import {
 } from "./slices/slices";
 import ResultsPage from "./components/ResultsPage";
 import LoadingPage from "./components/LoadingPage";
+import { AnimatePresence } from "framer-motion";
 
-const socket = io('https://guess-who-salt-game-socket.herokuapp.com/');
-// const socket = io("http://localhost:8000/");
+// const url = 'https://guess-who-salt-game-socket.herokuapp.com/';
+const url = "http://localhost:8000/";
+
+const initialSocket = io(url); //need to declare this here, if we put 'io(url)' in line 25 it creates 2 sockets cuz react reads the component twice
 
 const App = () => {
   const [message, setMessage] = useState('');
   const [log, setLog] = useState<string[]>([]);
+  const [socket, setSocket] = useState(initialSocket);
   const state = useAppSelector((state) => state.updateGame);
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    socket.on("room-alert", (roomId, people) => {
-      console.log('room-alert', roomId, '***');
+  const addSocketListeners = (socket: any) => { // helper function to dynamically add all listeners to a specific socket
+    socket.on("room-alert", (roomId: string, people: string[]) => {
       dispatch(setReducer(people));
       dispatch(setRoomReducer(roomId));
       navigate("/gamepage");
     });
-    socket.on("chosen", (render, guess, turnStatus) => {
-      console.log('chosen');
+    socket.on("chosen", (render: Card, guess: Card, turnStatus: string) => {
       const chosens = {
         render: render,
         guess: guess,
@@ -40,9 +42,8 @@ const App = () => {
       dispatch(setPlayingReducer(turnStatus));
       dispatch(setChosenReducer(chosens));
     });
-    socket.on("return-win", (socketId, roomId) => {
-      console.log('return-win', roomId, '*****');
-      socket.emit("leave-room", roomId);
+    socket.on("return-win", (socketId: string, roomId: string) => {
+      socket.emit("leave-room", roomId); // server disconnects all sockets that send this event, as well as kicking them from the room
       dispatch(setReducer([]));
       if (socketId === socket.id) {
         dispatch(setPlayingReducer("won"));
@@ -51,10 +52,10 @@ const App = () => {
         dispatch(setPlayingReducer("lost"));
       }
       navigate("/results");
-      // RESET SOCKET HERE???
+
+      setSocket(addSocketListeners(io(url))); // since addSocketListeners returns the socket on line 76, we can actually do this
     });
     socket.on("return-change-turn", (socketId: string, name: string) => {
-      console.log('change turn running')
       if (socketId !== socket.id) {
         dispatch(setPlayingReducer('active'));
         if (name !== null) {
@@ -63,30 +64,37 @@ const App = () => {
       }
     });
     socket.on("return-send-message", (userInput: string, socketId: string) => {
-      console.log('return send message running')
       if (socketId !== socket.id) {
         setMessage(userInput);
       }
     });
     socket.on("return-question-answer", (message: string, answer: string) => {
-      setLog(previousState => {
-        console.log(previousState);
-        return [answer, ...previousState];
-      });
+      setLog(previousState => [answer, ...previousState]);
     });
     socket.on('return-print-question', (question: string) => {
       setLog(previousState => [question, ...previousState]);
     })
-  }, [socket]);
+    return socket;
+  };
+
+  useEffect(() => {
+    console.log('initial useEffect runs');
+
+    addSocketListeners(socket); // this function actually calls itself, on a new socket. So we only need to run it once on mount and
+                                // it will run itself again whenever it needs to.
+
+  }, []);
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home socket={socket} />} />
-        <Route path="/gamepage" element={<GamePage socket={socket} message={message} log={log} setLog={setLog} setMessage={setMessage} />} />
-        <Route path="/results" element={<ResultsPage socket={socket} />} />
-        <Route path="/waiting" element={<LoadingPage socket={socket} />} />
-      </Routes>
+      <AnimatePresence exitBeforeEnter initial={false}>
+        <Routes>
+          <Route path="/" element={<Home socket={socket} />} />
+          <Route path="/gamepage" element={<GamePage socket={socket} message={message} log={log} setLog={setLog} setMessage={setMessage} />} />
+          <Route path="/results" element={<ResultsPage socket={socket} />} />
+          <Route path="/waiting" element={<LoadingPage socket={socket} />} />
+        </Routes>
+      </AnimatePresence>
     </div>
   );
 };
