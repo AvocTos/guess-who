@@ -96,6 +96,11 @@ const App = () => {
     socket.on('return-print-question', (question: string) => {
       setLog(previousState => [question, ...previousState]);
     })
+    socket.on('disconnect-alert', (roomId: string) => {
+      socket.emit('leave-room', roomId);
+      navigate('/');
+      setSocket(addSocketListeners(io(url)));
+    })
     return socket;
   };
 

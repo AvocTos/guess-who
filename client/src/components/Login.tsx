@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState ,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
@@ -7,11 +7,12 @@ import { setUserReducer } from '../slices/slices';
 
 
 const Login = () => {
-
+  
  const state = useAppSelector(state => state.updateGame);
  const dispatch = useAppDispatch();
 
  const navigate = useNavigate();
+
   const [userNameInput, setUserNameInput] = useState<string>('');
   const [passwordInput, setPasswordInput] = useState<string>('');
 
