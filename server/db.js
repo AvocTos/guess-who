@@ -18,6 +18,21 @@ const getUsers = async () => {
   return result;
 }
 
+const getScoreBoard = async () => {
+  const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+
+  await client.connect();
+  const database = client.db('guess-who-db');
+  const collection = database.collection('users');
+
+  const result = await collection.find().sort({score:-1}).limit(5).toArray();
+  await client.close();
+  return result;
+}
+
 const findUser = async (username) => {
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
@@ -103,3 +118,4 @@ module.exports.findUser = findUser;
 module.exports.updateUser = updateUser;
 module.exports.findSessionId = findSessionId;
 module.exports.updatePoints = updatePoints;
+module.exports.getScoreBoard = getScoreBoard;

@@ -16,6 +16,11 @@ app.get('/api/users', async (req, res) => {
     res.send(results);
 });
 
+app.get('/api/scoreboard', async (req, res) => {
+    const results = await db.getScoreBoard();
+    res.send(results);
+});
+
 app.get('/api/user/:name', async (req, res) => {
     const results = await db.findUser(req.params.name);
     console.log('name', results);
