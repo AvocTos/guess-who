@@ -4,7 +4,7 @@
   overflow: scroll;
   flex-direction: column-reverse;
   height: 10rem;
-  width: 20rem;;
+  width: 20rem;
   margin: auto;
   border-radius: 0.3rem;
   background-color: var(--chatlog-bg);
@@ -13,9 +13,8 @@
 }
 
 .chat-container {
-    padding: 0.2rem;
-    overflow-wrap: break-word;
-    &__message {
-
-    }
+  padding: 0.2rem;
+  overflow-wrap: break-word;
+  &__message {
+  }
 }

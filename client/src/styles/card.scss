@@ -1,18 +1,18 @@
 .card {
-    border-radius: 5px;
-    text-align: center;
-    flex-grow: 1;
-    max-width: 10rem;
-    background-color: var(--card-bg);
-    padding-bottom: 0.5rem;
-    border: 1px solid var(--box-shadow);
-    box-shadow: 0 0 5px var(--box-shadow);
+  border-radius: 5px;
+  text-align: center;
+  flex-grow: 1;
+  max-width: 10rem;
+  background-color: var(--card-bg);
+  padding-bottom: 0.5rem;
+  border: 1px solid var(--box-shadow);
+  box-shadow: 0 0 5px var(--box-shadow);
   &__img {
     height: 10rem;
     width: 100%;
     border-top-left-radius: 0.2rem;
     border-top-right-radius: 0.2rem;
- }
+  }
   &__name {
     padding: 0.3rem;
   }
@@ -21,13 +21,14 @@
     padding: 0.2rem;
     border: 1px solid #eee;
     &--inactive {
-     visibility:hidden;
+      visibility: hidden;
     }
   }
   &--inactive {
     background-color: var(--card-inactive);
   }
-  &--inactive > .card__img, &--inactive > .card__btn {
+  &--inactive > .card__img,
+  &--inactive > .card__btn {
     visibility: hidden;
   }
 }
