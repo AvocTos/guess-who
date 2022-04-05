@@ -1,5 +1,6 @@
-const { MongoClient } = require("mongodb");
-require("dotenv").config();
+const { MongoClient } = require('mongodb');
+require('dotenv').config();
+
 const uri = process.env.MONGO_URI;
 
 const getUsers = async () => {
@@ -9,8 +10,8 @@ const getUsers = async () => {
   });
 
   await client.connect();
-  const database = client.db("guess-who-db");
-  const collection = database.collection("users");
+  const database = client.db('guess-who-db');
+  const collection = database.collection('users');
 
   const query = {};
   const result = await collection.findOne(query);
@@ -25,23 +26,23 @@ const getScoreBoard = async () => {
   });
 
   await client.connect();
-  const database = client.db("guess-who-db");
-  const collection = database.collection("users");
+  const database = client.db('guess-who-db');
+  const collection = database.collection('users');
 
   const result = await collection.find().sort({ score: -1 }).limit(5).toArray();
   await client.close();
   return result;
 };
 
-const findUser = async (username) => {
+const findUser = async username => {
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
 
   await client.connect();
-  const database = client.db("guess-who-db");
-  const collection = database.collection("users");
+  const database = client.db('guess-who-db');
+  const collection = database.collection('users');
 
   const query = { username };
   const result = await collection.findOne(query);
@@ -49,15 +50,15 @@ const findUser = async (username) => {
   return result;
 };
 
-const addUser = async (user) => {
+const addUser = async user => {
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
 
   await client.connect();
-  const database = client.db("guess-who-db");
-  const collection = database.collection("users");
+  const database = client.db('guess-who-db');
+  const collection = database.collection('users');
 
   const result = await collection.insertOne(user);
   await client.close();
@@ -71,12 +72,12 @@ const updateUser = async (sessionId, username) => {
   });
 
   await client.connect();
-  const database = client.db("guess-who-db");
-  const collection = database.collection("users");
+  const database = client.db('guess-who-db');
+  const collection = database.collection('users');
 
   const query = { username };
   const result = await collection.updateOne(query, {
-    $set: { sessionId: sessionId },
+    $set: { sessionId },
   });
   await client.close();
   return result;
@@ -89,8 +90,8 @@ const updatePoints = async (points, username) => {
   });
 
   await client.connect();
-  const database = client.db("guess-who-db");
-  const collection = database.collection("users");
+  const database = client.db('guess-who-db');
+  const collection = database.collection('users');
 
   const query = { username };
   const result = await collection.updateOne(query, { $inc: { score: points } });
@@ -98,15 +99,15 @@ const updatePoints = async (points, username) => {
   return result;
 };
 
-const findSessionId = async (sessionId) => {
+const findSessionId = async sessionId => {
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
 
   await client.connect();
-  const database = client.db("guess-who-db");
-  const collection = database.collection("users");
+  const database = client.db('guess-who-db');
+  const collection = database.collection('users');
 
   const query = { sessionId };
   const result = await collection.findOne(query);
