@@ -95,10 +95,11 @@ const App = () => {
         dispatch(setPlayingReducer("active"));
         if (name !== null) {
           setLog((previousState) => [
-            `Opponent guessed ${name}, and was wrong!`,
+            `${players.opponent} guessed ${name}, and was wrong!`,
             ...previousState,
           ]);
         }
+        /// FIW OPPONENETETTETET
       }
     });
     socket.on("return-send-message", (userInput: string, socketId: string) => {
