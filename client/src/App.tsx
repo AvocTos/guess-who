@@ -118,6 +118,7 @@ const App = () => {
       }
       if(data !== null){
         dispatch(setUserReducer(data.username));
+        socket.emit('add-online-list', {id: socket.id, name: data.username});
       }
     });
 
