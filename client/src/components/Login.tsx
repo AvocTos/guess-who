@@ -37,7 +37,6 @@ const Login = () => {
         body: JSON.stringify({sessionId: newSessionId}),
         headers: {"content-type" : "application/json"},
       }
-      console.log('before', userNameInput);
       fetch(`${address}/api/user/${userNameInput}`, requestOptions)
       .then(res => {
         window.localStorage.setItem('sessionId', newSessionId);

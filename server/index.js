@@ -28,7 +28,6 @@ app.get('/api/scoreboard', async (req, res) => {
 app.get('/api/user/:name', async (req, res) => {
     try {
         const results = await db.findUser(req.params.name);
-        console.log('name', results);
         return res.json(results);
     } catch(err) {
         console.log(err.message);
@@ -77,7 +76,6 @@ app.get('/', (req, res) => {
     app.use(express.static(root));
     res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 });
-
 
 module.exports.app = app;
 app.listen(process.env.PORT || 8080);

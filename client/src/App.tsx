@@ -45,7 +45,6 @@ const App = () => {
         render: render,
         guess: guess,
       };
-      console.log(names);
       dispatch(setPlayingReducer(turnStatus));
       dispatch(setChosenReducer(chosens));
     });
@@ -55,7 +54,6 @@ const App = () => {
       dispatch(setReducer([]));
       if (socketId === socket.id) {
         dispatch(setPlayingReducer("won"));
-        console.log(playerNames, 'won')
         fetch(`${address}/api/user/score/${playerNames.yourself}`, {
           method: 'PUT',
           body: JSON.stringify({score: 100}),
@@ -64,7 +62,6 @@ const App = () => {
       }
       if (socketId !== socket.id) {
         dispatch(setPlayingReducer("lost"));
-        console.log(playerNames, 'lost')
 
         fetch(`${address}/api/user/score/${playerNames.yourself}`, {
           method: 'PUT',

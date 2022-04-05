@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
+import { useAppSelector, useAppDispatch } from '../hooks/hooks';
+import { setUserReducer } from '../slices/slices';
 
 const Signup = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const [userNameInput, setUserNameInput] = useState<string>('');
   const [passwordInput, setPasswordInput] = useState<string>('');
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
     const newUser = {
       username: userNameInput,
       password: passwordInput,
@@ -19,13 +24,20 @@ const Signup = () => {
       body: JSON.stringify(newUser),
       headers: {"content-type" : "application/json"},
     }
+    const newSessionId = uuidv4();
     const address = process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : '';
-
-    fetch(`${address}/api/users`, requestOptions);
-
-    // login the new user
-    
-    navigate('/');
+    const result = await fetch(`${address}/api/user/${userNameInput}`);
+    const data = await result.json();
+    console.log(data);
+    if (data === null) {
+      await fetch(`${address}/api/users`, requestOptions);
+      window.localStorage.setItem('sessionId', newSessionId);
+      dispatch(setUserReducer(userNameInput));
+      navigate('/');
+    }
+    if (data !== null) {
+      alert('This username is already taken...');
+    }
   };
 
   return (
