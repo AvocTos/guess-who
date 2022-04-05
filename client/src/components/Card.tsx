@@ -1,19 +1,19 @@
-import { useAppDispatch, useAppSelector } from "../hooks/hooks";
-import { setPlayingReducer } from "../slices/slices";
-import { useState } from "react";
+import React, { useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
+import { setPlayingReducer } from '../slices/slices';
 
 const Card = ({ person, socket }: CardProps) => {
   const [active, setActive] = useState(true);
-  const state = useAppSelector((state) => state.updateGame);
+  const gameState = useAppSelector((state) => state.updateGame);
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    if (state.chosens.guess.name === person.name) {
-      socket.emit("win", state.roomId, socket.id);
+    if (gameState.chosens.guess.name === person.name) {
+      socket.emit('win', gameState.roomId, socket.id);
     }
-    if (state.chosens.guess.name !== person.name) {
-      socket.emit("change-turn", state.roomId, person.name);
-      dispatch(setPlayingReducer("inactive"));
+    if (gameState.chosens.guess.name !== person.name) {
+      socket.emit('change-turn', gameState.roomId, person.name);
+      dispatch(setPlayingReducer('inactive'));
     }
   };
 
@@ -23,17 +23,19 @@ const Card = ({ person, socket }: CardProps) => {
   return (
     <article
       onClick={togglecard}
-      className={active ? "card" : "card card--inactive"}
+      className={active ? 'card' : 'card card--inactive'}
     >
       <img
         src={require(`../player-images/${person.image}`)}
+        alt={`a portrait of ${person.name}`}
         className="card__img"
       />
-      <p className="card__name">{person.name}</p>
+      <p className="card__name">
+        {person.name}
+      </p>
       <button
-        className={
-          state.playing === "active" ? "card__btn" : "card__btn--inactive"
-        }
+        className={gameState.playing === 'active' ? 'card__btn' : 'card__btn--inactive'}
+        type="button"
         onClick={handleClick}
       >
         Guess

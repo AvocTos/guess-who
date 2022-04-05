@@ -1,14 +1,12 @@
-import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../hooks/hooks";
-import { motion } from "framer-motion";
+import React, { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const LoadingPage = ({ socket }: HomeProps) => {
-  const state = useAppSelector((state) => state.updateGame);
   const navigate = useNavigate();
 
   const navigateToHomepage = () => {
-    navigate("/");
-    socket.emit("leave-waiting");
+    navigate('/');
+    socket.emit('leave-waiting');
   };
 
   return (
@@ -19,8 +17,10 @@ const LoadingPage = ({ socket }: HomeProps) => {
       transition={{ duration: 0.5 }}
     >
       <div className="loading-page">
-        <h1 className="loading-page__title">Waiting for someone to join...</h1>
-        <button className="loading-page__back-btn" onClick={navigateToHomepage}>
+        <h1 className="loading-page__title">
+          Waiting for someone to join...
+        </h1>
+        <button type="button" className="loading-page__back-btn" onClick={navigateToHomepage}>
           Go back
         </button>
       </div>
