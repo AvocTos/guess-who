@@ -108,19 +108,22 @@ const App = () => {
     if (!window.localStorage.sessionId) {
       navigate('/login');
     }
-    const address = process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : '';
-    const storedSession = window.localStorage.getItem('sessionId');
-    fetch(`${address}/api/user/id/${storedSession}`)
-    .then(res => res.json())
-    .then(data => {
-      if (data === null) {
-        navigate('/login');
-      }
-      if(data !== null){
-        dispatch(setUserReducer(data.username));
-        socket.emit('add-online-list', {id: socket.id, name: data.username});
-      }
-    });
+    if (window.localStorage.sessionId) {
+      const address = process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : '';
+      const storedSession = window.localStorage.getItem('sessionId');
+  
+      fetch(`${address}/api/user/id/${storedSession}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data === null) {
+          navigate('/login');
+        }
+        if(data !== null){
+          dispatch(setUserReducer(data.username));
+          socket.emit('add-online-list', {id: socket.id, name: data.username});
+        }
+      });
+    }
 
     addSocketListeners(socket); // this function actually calls itself, on a new socket. So we only need to run it once on mount and
                                 // it will run itself again whenever it needs to.
@@ -131,7 +134,7 @@ const App = () => {
     <div className="App">
       <AnimatePresence exitBeforeEnter initial={false}>
         <Routes>
-          <Route path="/" element={<Home socket={socket} />} />
+          <Route path="/" element={!window.localStorage.sessionId ? <p></p> : <Home socket={socket} />} />
           <Route path="/gamepage" element={<GamePage socket={socket} message={message} log={log} setLog={setLog} setMessage={setMessage} />} />
           <Route path="/results" element={<ResultsPage socket={socket} />} />
           <Route path="/waiting" element={<LoadingPage socket={socket} />} />
