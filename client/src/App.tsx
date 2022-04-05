@@ -16,7 +16,7 @@ import LoadingPage from "./components/LoadingPage";
 // const url = 'https://guess-who-salt-game-socket.herokuapp.com/';
 const url = "http://localhost:8000/";
 
-const initialSocket = io(url); //need to declare this here, if we put 'io(url)' in line 25 it creates 2 sockets cuz react reads the component twice
+const initialSocket = io(url); //need to declare this here, if we put 'io(url)' in line 24 it creates 2 sockets cuz react reads the component twice
 
 const App = () => {
   const [message, setMessage] = useState('');
