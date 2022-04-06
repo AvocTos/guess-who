@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAppSelector } from '../hooks/hooks';
-import LogoSpinner from "./LogoSpinner";
+import LogoSpinner from './LogoSpinner';
 import Scoreboard from './Scoreboard';
 
 const Home = ({ socket }: HomeProps) => {
@@ -32,35 +32,30 @@ const Home = ({ socket }: HomeProps) => {
     window.localStorage.clear();
     navigate('/login');
   };
-  
+
   const goToInstructions = () => {
-    navigate("/instructions");
+    navigate('/instructions');
   };
   return (
     <motion.div
-      initial={{ opacity: 0 }} // should be === to the exit value of where we came from
-      animate={{ opacity: 1 }} // what you want to happen
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }} // for smooth transitions
+      transition={{ duration: 0.5 }}
     >
       <nav className="home__nav">
-        <button className="home__instructions-btn" onClick={goToInstructions}>
-          Instructions
-        </button>
-        <button className="home__signout-btn" onClick={signOut}>
-          Log Out
-        </button>
+        <button type="button" className="home__instructions-btn" onClick={goToInstructions}>Instructions</button>
+        <button type="button" className="home__signout-btn" onClick={signOut}>Log Out</button>
       </nav>
       <div className="home">
         <LogoSpinner />
         <h1 className="home__title">Guess Who?</h1>
         <div className="home__welcome">
-        <h2>Welcome {gameState.playerName}</h2><br></br>
-        <h3>Your current score is {score}</h3>
+          <h2>{`Welcome ${gameState.playerName}`}</h2>
+          <br></br>
+          <h3>{`Your current score is ${score}`}</h3>
         </div>
-        <button type="button" className="home__play-btn" onClick={navigateToGamepage}>
-          Go play
-        </button>
+        <button type="button" className="home__play-btn" onClick={navigateToGamepage}>Go play</button>
         <Scoreboard />
       </div>
     </motion.div>

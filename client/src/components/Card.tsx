@@ -23,11 +23,12 @@ const Card = ({ person, socket }: CardProps) => {
   return (
     <article
       onClick={togglecard}
-      className={active ? "card" : "card card--inactive"}
-      id={gameState.playing === "active" ? "" : "card-not-turn"}
+      role="presentation"
+      className={active ? 'card' : 'card card--inactive'}
+      id={gameState.playing === 'active' ? '' : 'card-not-turn'}
     >
       <img
-        src={require(`../player-images/${person.image}`)}
+        src={require(`../player-images/${person.image}`)}// eslint-disable-line import/no-dynamic-require
         alt={`a portrait of ${person.name}`}
         className="card__img"
       />

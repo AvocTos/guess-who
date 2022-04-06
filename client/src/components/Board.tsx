@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { useAppSelector } from '../hooks/hooks';
 import Card from './Card';
 
@@ -8,8 +9,8 @@ const Board = ({ socket }: BoardProps) => {
   // ß
   return (
     <section className="board">
-      {gameState.cards.map((person, index: number) => (
-        <Card key={index} person={person} socket={socket} />
+      {gameState.cards.map((person) => (
+        <Card key={uuidv4()} person={person} socket={socket} />
       ))}
     </section>
   );

@@ -26,9 +26,9 @@ const initialSocket = io(url);
 // if we put 'io(url)' in line 25 it creates 2 sockets cuz react reads the component twice
 
 const App = () => {
-  const [message, setMessage] = useState('');
+  const [stateMessage, setStateMessage] = useState('');
   const [log, setLog] = useState<string[]>(['This is the beginning of the log!', 'Welcome to Guess Who!']);
-  const [socket, setSocket] = useState(initialSocket);
+  const [stateSocket, setStateSocket] = useState(initialSocket);
   const [players, setPlayers] = useState({ yourself: '', opponent: '' });
   const dispatch = useAppDispatch();
 
@@ -79,7 +79,7 @@ const App = () => {
       }
       navigate('/results');
 
-      setSocket(addSocketListeners(io(url)));
+      setStateSocket(addSocketListeners(io(url)));
       // ^ since addSocketListeners returns the socket on line 76, we can actually do this
     });
     socket.on('return-change-turn', (socketId: string, name: string) => {
@@ -97,7 +97,7 @@ const App = () => {
     });
     socket.on('return-send-message', (userInput: string, socketId: string) => {
       if (socketId !== socket.id) {
-        setMessage(userInput);
+        setStateMessage(userInput);
       }
     });
     socket.on('return-question-answer', (message: string, answer: string) => {
@@ -109,7 +109,7 @@ const App = () => {
     socket.on('disconnect-alert', (roomId: string) => {
       socket.emit('leave-room', roomId);
       navigate('/');
-      setSocket(addSocketListeners(io(url)));
+      setStateSocket(addSocketListeners(io(url)));
     });
     return socket;
   };
@@ -128,15 +128,15 @@ const App = () => {
           }
           if (data !== null) {
             dispatch(setUserReducer(data.username));
-            socket.emit('add-online-list', {
-              id: socket.id,
+            stateSocket.emit('add-online-list', {
+              id: stateSocket.id,
               name: data.username,
             });
           }
         });
     }
 
-    addSocketListeners(socket);
+    addSocketListeners(stateSocket);
     // ^ this function actually calls itself, on a new socket.
     // So we only need to run it once on mount and
     // it will run itself again whenever it needs to.
@@ -152,7 +152,7 @@ const App = () => {
               !window.localStorage.sessionId ? (
                 <p />
               ) : (
-                <Home socket={socket} />
+                <Home socket={stateSocket} />
               )
             }
           />
@@ -160,17 +160,17 @@ const App = () => {
             path="/gamepage"
             element={(
               <GamePage
-                socket={socket}
-                message={message}
+                socket={stateSocket}
+                message={stateMessage}
                 log={log}
                 setLog={setLog}
-                setMessage={setMessage}
+                setMessage={setStateMessage}
                 players={players}
               />
             )}
           />
-          <Route path="/results" element={<ResultsPage socket={socket} />} />
-          <Route path="/waiting" element={<LoadingPage socket={socket} />} />
+          <Route path="/results" element={<ResultsPage socket={stateSocket} />} />
+          <Route path="/waiting" element={<LoadingPage socket={stateSocket} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/instructions" element={<Instructions />} />

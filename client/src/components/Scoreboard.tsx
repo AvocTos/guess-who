@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const Scoreboard = () => {
   const [scoreboardList, setScoreboardList] = useState([
@@ -19,14 +20,11 @@ const Scoreboard = () => {
     <div className="scoreboard">
       <h3 className="scoreboard__title">Top 5 scores:</h3>
       <ul className="scoreboard__list">
-        {scoreboardList.map((person, index: number) => {
-          return (
-
-              <li key={index} className="scoreboard__item">
-                {person.username}: {person.score}
-              </li>
-          );
-        })}
+        {scoreboardList.map((person) => (
+          <li key={uuidv4()} className="scoreboard__item">
+            {`${person.username}: ${person.score}`}
+          </li>
+        ))}
       </ul>
     </div>
   );

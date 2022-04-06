@@ -21,6 +21,9 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "react/self-closing-comp": "off",
+    "no-alert": "off",
+    "global-require": 0,
     "react/function-component-definition": [
       2,
       {

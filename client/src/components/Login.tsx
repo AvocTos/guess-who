@@ -65,12 +65,11 @@ const Login = () => {
           placeholder="password"
           onChange={(e) => setPasswordInput(e.target.value)}
         />
-        <button type="submit" className="form__ask-btn">
-          Login
-        </button>
+        <button type="submit" className="form__ask-btn">Login</button>
       </form>
       <p>
-        Don&apos;t have an account?<br></br>
+        Don&apos;t have an account?
+        <br></br>
         <Link to="/signup"> Click here to sign up!</Link>
       </p>
     </div>

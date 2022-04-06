@@ -40,7 +40,7 @@ const Signup = () => {
 
   return (
     <div className="signup">
-      <h2 className="signup__title" >Sign Up</h2> 
+      <h2 className="signup__title">Sign Up</h2>
       <form className="signup__form" onSubmit={handleSubmit}>
         <input
           className="form__input"
@@ -64,7 +64,8 @@ const Signup = () => {
         <button type="button" className="form__ask-btn">Sign Up</button>
       </form>
       <p>
-        Already have an account?<br></br>
+        Already have an account?
+        <br></br>
         <Link to="/login">Click here to Login!</Link>
       </p>
     </div>

@@ -39,7 +39,7 @@ const Questions = ({
         <div className="question__img">
           <article className="card">
             <img
-              src={require(`../player-images/${gameState.chosens.render.image}`)}
+              src={require(`../player-images/${gameState.chosens.render.image}`)}// eslint-disable-line import/no-dynamic-require
               alt={`a portrait of ${gameState.chosens.render.name}`}
               className="card__img"
             />
