@@ -22,8 +22,6 @@ const url = process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : '
 const address = process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : '';
 
 const initialSocket = io(url);
-// ^ need to declare this here,
-// if we put 'io(url)' in line 25 it creates 2 sockets cuz react reads the component twice
 
 const App = () => {
   const [stateMessage, setStateMessage] = useState('');
@@ -35,7 +33,6 @@ const App = () => {
   const navigate = useNavigate();
 
   const addSocketListeners = (socket: any) => {
-    // helper function to dynamically add all listeners to a specific socket
     let playerNames: { yourself: string; opponent: string };
     socket.on('room-alert', (roomId: string, people: string[]) => {
       dispatch(setReducer(people));
@@ -59,7 +56,7 @@ const App = () => {
     );
     socket.on('return-win', (socketId: string, roomId: string) => {
       socket.emit('leave-room', roomId);
-      setLog([]);
+      setLog(['This is the beginning of the log!', 'Welcome to Guess Who!']);
       dispatch(setReducer([]));
       if (socketId === socket.id) {
         dispatch(setPlayingReducer('won'));
@@ -80,19 +77,21 @@ const App = () => {
       navigate('/results');
 
       setStateSocket(addSocketListeners(io(url)));
-      // ^ since addSocketListeners returns the socket on line 76, we can actually do this
     });
     socket.on('return-change-turn', (socketId: string, name: string) => {
-      // if socketId is socket.id, lose points
       if (socketId !== socket.id) {
         dispatch(setPlayingReducer('active'));
         if (name !== null) {
+          const hahahaha = () => { // eslint-disable-line
+            while (players.opponent === '') {
+              setTimeout(hahahaha, 50); // eslint-disable-line
+            }
+          };
           setLog((previousState) => [
             `${players.opponent} guessed ${name}, and was wrong!`,
             ...previousState,
           ]);
         }
-        /// FIW OPPONENETETTETET
       }
     });
     socket.on('return-send-message', (userInput: string, socketId: string) => {

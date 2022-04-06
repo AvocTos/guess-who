@@ -20,10 +20,14 @@ const Login = () => {
     const result = await user.json();
     if (result === null) {
       alert('Username or Password are incorrect');
+      setUserNameInput('');
+      setPasswordInput('');
       return;
     }
     if (result.password !== passwordInput) {
       alert('Username or Password are incorrect');
+      setUserNameInput('');
+      setPasswordInput('');
       return;
     }
     if (result.password === passwordInput) {
