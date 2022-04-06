@@ -18,14 +18,14 @@
   &__btn {
     border-radius: 0.2rem;
     padding: 0.2rem;
-    border: 1px solid var(--btn-border);
+    border: 1px solid var(--btn-submit-border);
     background-color: var(--btn-submit-bg);
     &--inactive {
       visibility: hidden;
     }
     &:hover {
-      border: 1px solid var(--btn-submit-bg-hover);
-      background-color: #f0d0cc;
+      border: 1px solid var(--btn-submit-bg);
+      background-color: var(--btn-submit-bg-hover);
     }
   }
   &--inactive {

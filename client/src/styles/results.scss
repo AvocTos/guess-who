@@ -11,21 +11,21 @@
     margin-top: 3rem;
     margin-right: 1rem;
     min-width: 3rem;
-    background-color: var(--green);
+    background-color: var(--btn-click-bg);
     &:hover {
-        background-color: #bae1d189;
+        background-color: var(--btn-click-bg-hover);
       }
   }
   &__back-btn {
     padding: 0.4rem 0.6rem;
     border-radius: 5px;
     margin-top: 3rem;
-    background-color: var(--green);
+    background-color: var(--btn-click-bg);
     min-width: 3rem;
     margin-left: 1rem;
 
     &:hover {
-        background-color: #bae1d189;
+        background-color: var(--btn-click-bg-hover);
       }
   }
 }

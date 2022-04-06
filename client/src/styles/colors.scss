@@ -1,6 +1,7 @@
 :root {
   --dark-red: #e99a9f;
   --pink: #ecb4ae;
+  --light-pink: #f0d0cc;
   --peach: #f1d4be;
   --yellow: #dee7c8;
   --green: #bae1d1;
@@ -13,27 +14,21 @@
   --btn-click-bg-hover: var(--light-green);
 
   --btn-submit-bg: var(--pink);
-  --btn-submit-bg-hover: var(--pink);
+  --btn-submit-bg-hover: var(--light-pink);
+  --btn-submit-border: var(--pink);
 
-  --input-bg: var();
   --card-bg: var(--light-beige);
-  --btn-border: var(--green);
-  --chatlog-border: var(--dark-red);
 
-  --gold: #e9be27;
-  --blue: #505a78;
-  --peach: #ea9f76;
-  --burgundy: #5c3332;
-  --light-white: rgba(238, 238, 238, 0.358);
-  --white: #ffffff;
-  --dark-white: #e1e1e1;
-  --dark-grey: #484848;
-  --chatlog-bg: #faf7f1ba;
-  --font-color: var(--dark-grey);
+  --input-bg: var(--light-beige);
+  --input-border: var(--pink);
+
+  --chatlog-border: var(--dark-red);
+  --chatlog-bg: var(--light-beige);
+
   --main-bg: var(--beige);
-  --box-shadow: var(--green);
-  --btn-border-hover: var(--dark-white);
-  --btn-bg-hover: var(--light-white);
-  --card-inactive: var(--light-white);
   --logo-bg: var(--yellow);
+  --scoreboard-border: var(--dark-red); 
+  --scoreboard-bg: var(--light-beige);
+
+  --font-color: var(--dark-grey);
 }
