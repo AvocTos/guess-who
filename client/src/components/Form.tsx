@@ -21,19 +21,17 @@ const Form = ({ socket, players }: FormProps) => {
 
   return (
     <>
-      <div className={state.playing === "active" ? "form" : "form--inactive"}>
-        <form onSubmit={handleSubmit}>
-          <input
-            className="form__input"
-            required
-            type="text"
-            value={userInput}
-            placeholder="ex. are they blond"
-            onChange={(e) => setUserInput(e.target.value)}
-          />
-          <button className="form__ask-btn">Ask</button>
-        </form>
-      </div>
+      <form className={state.playing === "active" ? "form" : "form--inactive"} onSubmit={handleSubmit}>
+        <input
+          className="form__input"
+          required
+          type="text"
+          value={userInput}
+          placeholder="ex. are they blond"
+          onChange={(e) => setUserInput(e.target.value)}
+        />
+        <button className="form__ask-btn">Ask</button>
+      </form>
     </>
   );
 };

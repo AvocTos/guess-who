@@ -1,0 +1,20 @@
+.instructions {
+  width: 50rem;
+  margin: auto;
+  margin-top: 10rem;
+  &__title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  &__go-back-btn {
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 0.2rem 0.4rem;
+    background-color: var(--btn-click-bg);
+    &:hover {
+        background-color: var(--btn-click-bg-hover);
+      }
+  }
+}

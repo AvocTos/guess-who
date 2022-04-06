@@ -22,17 +22,19 @@ const Scoreboard = () => {
   }, []);
 
   return (
-    <>
-      <ul className="">
+    <div className="scoreboard">
+      <h3 className="scoreboard__title">Top 5 scores:</h3>
+      <ul className="scoreboard__list">
         {scoreboardList.map((person, index: number) => {
           return (
-            <li key={index}>
-              {person.username}, points: {person.score}
-            </li>
+
+              <li key={index} className="scoreboard__item">
+                {person.username}: {person.score}
+              </li>
           );
         })}
       </ul>
-    </>
+    </div>
   );
 };
 

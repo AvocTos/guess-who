@@ -1,0 +1,14 @@
+.login {
+  width: 20rem;
+  margin: auto;
+  margin-top: 30vh;
+  padding: 1rem;
+  background-color: var(#faf7f1ba);
+  text-align: center;
+  &__form {
+      margin-bottom: 1rem;
+      display: grid;
+      margin-top: 1rem;
+  }
+}
+

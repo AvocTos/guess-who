@@ -1,4 +1,25 @@
 :root {
+  --dark-red: #e99a9f;
+  --pink: #ecb4ae;
+  --peach: #f1d4be;
+  --yellow: #dee7c8;
+  --green: #bae1d1;
+  --light-green: #bae1d189;
+  --beige: #f9f0de;
+  --light-beige: #faf7f1ba;
+
+
+  --btn-click-bg: var(--green);
+  --btn-click-bg-hover: var(--light-green);
+
+  --btn-submit-bg: var(--pink);
+  --btn-submit-bg-hover: var(--pink);
+
+  --input-bg: var();
+  --card-bg: var(--light-beige);
+  --btn-border: var(--green);
+  --chatlog-border: var(--dark-red);
+
   --gold: #e9be27;
   --blue: #505a78;
   --peach: #ea9f76;
@@ -7,12 +28,12 @@
   --white: #ffffff;
   --dark-white: #e1e1e1;
   --dark-grey: #484848;
-  --chatlog-bg: var(--light-white);
+  --chatlog-bg: #faf7f1ba;
   --font-color: var(--dark-grey);
-  --main-bg: var(--white);
-  --card-bg: var(--white);
-  --box-shadow: var(--dark-white);
+  --main-bg: var(--beige);
+  --box-shadow: var(--green);
   --btn-border-hover: var(--dark-white);
   --btn-bg-hover: var(--light-white);
   --card-inactive: var(--light-white);
+  --logo-bg: var(--yellow);
 }

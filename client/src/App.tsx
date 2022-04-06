@@ -16,6 +16,7 @@ import LoadingPage from "./components/LoadingPage";
 import { AnimatePresence } from "framer-motion";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Instructions from "./components/Instructions";
 
 const url =
   process.env.NODE_ENV === "development"
@@ -28,7 +29,7 @@ const initialSocket = io(url); //need to declare this here, if we put 'io(url)' 
 
 const App = () => {
   const [message, setMessage] = useState("");
-  const [log, setLog] = useState<string[]>([]);
+  const [log, setLog] = useState<string[]>(['This is the beginning of the log!', 'Welcome to Guess Who!']);
   const [socket, setSocket] = useState(initialSocket);
   const [players, setPlayers] = useState({ yourself: "", opponent: "" });
   const state = useAppSelector((state) => state.updateGame);
@@ -181,6 +182,7 @@ const App = () => {
           <Route path="/waiting" element={<LoadingPage socket={socket} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/instructions" element={<Instructions />} />
         </Routes>
       </AnimatePresence>
     </div>

@@ -24,6 +24,7 @@ const Card = ({ person, socket }: CardProps) => {
     <article
       onClick={togglecard}
       className={active ? "card" : "card card--inactive"}
+      id={state.playing === "active" ? "" : "card-not-turn"}
     >
       <img
         src={require(`../player-images/${person.image}`)}

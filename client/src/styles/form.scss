@@ -1,14 +1,29 @@
 .form {
+    display: grid;
+    margin: auto;
     margin-top: 2rem;
+    width: 20rem;
     &__input {
-        border: 1px solid #eee;
+        height: 2rem;
+        border: 2px solid var(--pink);
         border-radius: 0.2rem;
         padding: 0.3rem;
+        margin-bottom: 1rem;
+        background-color: var(--input-bg);
+        font-family: 'Graduate', cursive;
     }
     &__ask-btn {
-        border: 1px solid #eee;
+        height: 2rem;
         border-radius: 0.2rem;
         padding: 0.3rem;
-        margin-left: 0.5rem;
+        border: 2px solid var(--pink);
+        background-color: var(--pink);
+        &--inactive {
+            visibility: hidden;
+        }
+        &:hover {
+        border: 2px solid var(--pink);
+        background-color: #f0d0cc;
+        }
     }
 }
