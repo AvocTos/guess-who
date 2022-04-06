@@ -45,7 +45,7 @@ const Home = ({ socket }: HomeProps) => {
         </h1>
         <h2>
           Welcome
-          { gameState.playerName}
+          {` ${gameState.playerName}`}
         </h2>
         <h3>
           Your currentscore is
