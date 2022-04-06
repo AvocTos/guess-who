@@ -1,10 +1,51 @@
 .home {
     text-align: center;
+    &__nav {
+        text-align: right;
+        margin-right: 1rem;
+    }
     &__title {
-        padding-top: 30vh;
         font-size: 5rem;
+        color: var(--font-color);
+        width: fit-content;
+        margin: auto;
+        margin-top: 2rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 5px;
     }
     &__play-btn {
-        margin-top: 3rem;
+        padding: 1rem 1.5rem;
+        margin-top: 2rem;
+        background-color: var(--btn-click-bg);
+        margin-bottom: 0.5rem;
+        &:hover {
+            background-color: var(--btn-click-bg-hover);
+          }
+    }
+    &__signout-btn {
+        padding: 0.2rem 0.4rem;
+        margin-top: 1rem;
+        margin-left: 1rem;
+
+        background-color: var(--btn-click-bg);
+        &:hover {
+            background-color: var(--btn-click-bg-hover);
+          }
+    }
+    &__instructions-btn {
+        padding: 0.2rem 0.4rem;
+        margin-top: 1rem;
+        margin-right: 1rem;
+        background-color: var(--btn-click-bg);
+        &:hover {
+            background-color: var(--btn-click-bg-hover);
+          }
+      }
+    &__welcome {
+        width: fit-content;
+        margin: auto;
+        margin-top: 2rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 5px;
     }
 }

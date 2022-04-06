@@ -44,8 +44,9 @@ const Login = () => {
   };
 
   return (
-    <div className="chatlog">
-      <form onSubmit={handleSubmit}>
+    <div className="login">
+      <h2 className="login__title">Log In</h2>
+      <form className="login__form" onSubmit={handleSubmit}>
         <input
           className="form__input"
           autoComplete="off"
@@ -69,7 +70,7 @@ const Login = () => {
         </button>
       </form>
       <p>
-        Don&apos;t have an account?
+        Don&apos;t have an account?<br></br>
         <Link to="/signup"> Click here to sign up!</Link>
       </p>
     </div>

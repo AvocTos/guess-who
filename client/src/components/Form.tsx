@@ -20,8 +20,9 @@ const Form = ({ socket, players }: FormProps) => {
   };
 
   return (
-    <div className={gameState.playing === 'active' ? 'form' : 'form--inactive'}>
-      <form onSubmit={handleSubmit}>
+    <>
+      <form className={gameState.playing === "active" ? "form" : "form--inactive"} onSubmit={handleSubmit}>
+      <p>Ask your question below:</p>
         <input
           className="form__input"
           required
@@ -34,7 +35,7 @@ const Form = ({ socket, players }: FormProps) => {
           Ask
         </button>
       </form>
-    </div>
+    </>
   );
 };
 

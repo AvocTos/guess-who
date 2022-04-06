@@ -1,0 +1,12 @@
+.login {
+  width: 20rem;
+  margin: auto;
+  margin-top: 30vh;
+  padding: 1rem;
+  text-align: center;
+  &__form {
+      margin-bottom: 1rem;
+      display: grid;
+      margin-top: 1rem;
+  }
+}

@@ -30,6 +30,8 @@ const GamePage = ({
               ? 'Ask a question or make a guess'
               : 'please wait...'}
           </p>
+          <br></br>
+          <p>Opponent's card to guess:</p>
           <Card socket={socket} person={gameState.chosens.render} />
           <Chatlog log={log} />
           <Form socket={socket} players={players} />

@@ -13,6 +13,7 @@ import {
 import GamePage from './components/GamePage';
 import ResultsPage from './components/ResultsPage';
 import LoadingPage from './components/LoadingPage';
+import Instructions from './components/Instructions';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Home from './components/Home';
@@ -26,7 +27,7 @@ const initialSocket = io(url);
 
 const App = () => {
   const [message, setMessage] = useState('');
-  const [log, setLog] = useState<string[]>([]);
+  const [log, setLog] = useState<string[]>(['This is the beginning of the log!', 'Welcome to Guess Who!']);
   const [socket, setSocket] = useState(initialSocket);
   const [players, setPlayers] = useState({ yourself: '', opponent: '' });
   const dispatch = useAppDispatch();
@@ -172,6 +173,7 @@ const App = () => {
           <Route path="/waiting" element={<LoadingPage socket={socket} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/instructions" element={<Instructions />} />
         </Routes>
       </AnimatePresence>
     </div>

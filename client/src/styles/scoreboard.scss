@@ -1,0 +1,21 @@
+.scoreboard {
+  margin-top: 2rem;
+  border: 2px solid var(--scoreboard-border);
+  width: fit-content;
+  margin: auto;
+  border-radius: 5px;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: var(--scoreboard-bg);
+  &__list{
+      margin:auto;
+      margin-top: 0.5rem;
+      width: fit-content;
+      list-style-type: none;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+  }
+  &__item {
+    margin: 0.2rem;
+  }
+}

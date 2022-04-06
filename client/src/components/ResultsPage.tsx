@@ -23,16 +23,8 @@ const ResultsPage = ({ socket }: HomeProps) => {
 
   return (
     <div className="results">
-      <h1 className="results__title">
-        You
-        { gameState.playing}
-        !
-      </h1>
-      <h2 className="results__title">
-        You gained
-        { points() }
-        points!
-      </h2>
+      <h1 className="results__title">You {gameState.playing}!</h1>
+      <h2 className="results__points">You gained {points()} points!</h2>
       <button type="button" className="results__play-btn" onClick={navigateToGamepage}>
         Play again
       </button>
