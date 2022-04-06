@@ -22,6 +22,7 @@ const Form = ({ socket, players }: FormProps) => {
   return (
     <>
       <form className={state.playing === "active" ? "form" : "form--inactive"} onSubmit={handleSubmit}>
+      <p>Ask your question below:</p>
         <input
           className="form__input"
           required

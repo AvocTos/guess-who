@@ -10,11 +10,14 @@
   background-color: var(--chatlog-bg);
   border: 1px solid var(--chatlog-border);
 }
-
-.chat-container {
+ 
+.chatlog__message {
   padding: 0.2rem;
   overflow-wrap: break-word;
   &__message {
     font-size: 0.9rem;
+  }
+  &:nth-child(2n) {
+    background-color: var(--light-green);
   }
 }
