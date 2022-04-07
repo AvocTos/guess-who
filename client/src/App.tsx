@@ -72,7 +72,7 @@ const App = () => {
         console.log(playerNames.yourself);
         fetch(`${address}/api/user/score/${playerNames.yourself}`, {
           method: "PUT",
-          body: JSON.stringify({ score: 100 }),
+          body: JSON.stringify({ score: 30 }),
           headers: { "content-type": "application/json" },
         });
       }
