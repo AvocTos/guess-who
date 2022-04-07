@@ -65,7 +65,7 @@ const App = () => {
     );
     socket.on("return-win", (socketId: string, roomId: string) => {
       socket.emit("leave-room", roomId);
-      setLog([]);
+      setLog(['This is the beginning of the log!', 'Welcome to Guess Who!']);
       dispatch(setReducer([]));
       if (socketId === socket.id) {
         dispatch(setPlayingReducer("won"));

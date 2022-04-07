@@ -14,7 +14,7 @@ const ResultsPage = ({ socket }: HomeProps) => {
   };
   const points = () => {
     if (state.playing === "won") {
-      return 100;
+      return 30;
     }
     if (state.playing === "lost") {
       return 10;

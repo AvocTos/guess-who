@@ -38,6 +38,8 @@ const Signup = () => {
     }
     if (data !== null) {
       alert("This username is already taken...");
+      setUserNameInput('');
+      setPasswordInput('');
     }
   };
 
